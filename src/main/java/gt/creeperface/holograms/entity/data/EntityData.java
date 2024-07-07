@@ -11,7 +11,7 @@ public class EntityData extends EntityMetadata implements Cloneable {
     public EntityData clone() {
         try {
             return (EntityData) super.clone();
-        } catch (CloneNotSupportedException e) {
+        } catch (Exception e) {
             return null;
         }
     }

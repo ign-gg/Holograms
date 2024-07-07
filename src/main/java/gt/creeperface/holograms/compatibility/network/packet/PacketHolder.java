@@ -10,11 +10,11 @@ public interface PacketHolder {
     DataPacket getPacket();
 
     default void encodePacket(boolean markEncoded) {
-        DataPacket pk = getPacket();
+        /*DataPacket pk = getPacket();
 
         pk.encode();
 
         if (markEncoded)
-            pk.isEncoded = true;
+            pk.isEncoded = true;*/
     }
 }

@@ -1,6 +1,6 @@
 name: Holograms
-version: 4.0
-api: ["1.0.0"]
+version: "${pom.version}"
+api: ["9.9.9"]
 main: gt.creeperface.holograms.Holograms
 description: Holograms plugin
 author: CreeperFace

@@ -122,7 +122,7 @@ public class HologramUpdater extends Thread implements InterruptibleThread {
                         pk.setZ(pos.z);
                         pk.setOnGround(true);
 
-                        pk.encodePacket(true);
+                        //pk.encodePacket(true);
 
                         movePackets.add(pk);
 
@@ -229,8 +229,8 @@ public class HologramUpdater extends Thread implements InterruptibleThread {
                         pk.metadata = new EntityMetadata()
                                 .putString(Entity.DATA_NAMETAG, line);
 
-                        pk.encode();
-                        pk.isEncoded = true;
+                        //pk.encode();
+                        //pk.isEncoded = true;
 
                         setData.add(pk);
                     }
@@ -277,8 +277,8 @@ public class HologramUpdater extends Thread implements InterruptibleThread {
                     RemoveEntityPacket rpk = new RemoveEntityPacket();
                     rpk.eid = id;
 
-                    rpk.encode();
-                    rpk.isEncoded = true;
+                    //rpk.encode();
+                    //rpk.isEncoded = true;
 
                     cachedRemovePackets.add(rpk);
                 }
@@ -420,8 +420,8 @@ public class HologramUpdater extends Thread implements InterruptibleThread {
                     RemoveEntityPacket rpk = new RemoveEntityPacket();
                     rpk.eid = id;
 
-                    rpk.encode();
-                    rpk.isEncoded = true;
+                    //rpk.encode();
+                    //rpk.isEncoded = true;
 
                     removePackets.add(rpk);
                 }
@@ -512,8 +512,8 @@ public class HologramUpdater extends Thread implements InterruptibleThread {
                     pk.metadata = new EntityMetadata()
                             .putString(Entity.DATA_NAMETAG, lines.get(i++));
 
-                    pk.encode();
-                    pk.isEncoded = true;
+                    //pk.encode();
+                    //pk.isEncoded = true;
 
                     packets.add(pk);
                 }
@@ -639,8 +639,8 @@ public class HologramUpdater extends Thread implements InterruptibleThread {
                     .putByte(Entity.DATA_ALWAYS_SHOW_NAMETAG, 1).putString(Entity.DATA_NAMETAG, line);
             pk.attributes = DEFAULT_ATTRIBUTES;
 
-            pk.encode();
-            pk.isEncoded = true;
+            //pk.encode();
+            //pk.isEncoded = true;
 
 //            MainLogger.getLogger().info("compiling packet with ID: "+id+", line: "+line);
             packets.add(pk);
@@ -721,7 +721,9 @@ public class HologramUpdater extends Thread implements InterruptibleThread {
             spawn = true;
             for (int i = 0; i < entityIds.length; i++) {
                 for (int j = 0; j < arraySize; j++) {
-                    entityIds[i][j] = Entity.entityCount++;
+                    synchronized (Entity.idLock) {
+                        entityIds[i][j] = Entity.entityCount++;
+                    }
                 }
             }
         } else {
@@ -731,7 +733,9 @@ public class HologramUpdater extends Thread implements InterruptibleThread {
 
                 if (reps.isEmpty() || reps.size() != arraySize) {
                     for (int j = 0; j < arraySize; j++) {
-                        entityIds[i][j] = Entity.entityCount++;
+                        synchronized (Entity.idLock) {
+                            entityIds[i][j] = Entity.entityCount++;
+                        }
                     }
                 } else {
                     for (int j = 0; j < reps.size(); j++) {
@@ -803,9 +807,9 @@ public class HologramUpdater extends Thread implements InterruptibleThread {
 
             for (int i = 0; i < packets.length; i++) {
                 DataPacket p = packets[i];
-                if (!p.isEncoded) {
+                /*if (!p.isEncoded) {
                     p.encode();
-                }
+                }*/
                 byte[] buf = p.getBuffer();
                 payload[i * 2] = Binary.writeUnsignedVarInt(buf.length);
                 payload[i * 2 + 1] = buf;

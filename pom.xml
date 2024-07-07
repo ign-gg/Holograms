@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>gt.creeperface.nukkit</groupId>
-    <artifactId>holograms</artifactId>
-    <version>1.0</version>
+    <artifactId>Holograms</artifactId>
+    <version>4.0-IGN</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -18,10 +18,9 @@
     <repositories>
         <repository>
             <id>nukkitx-repo</id>
-            <url>http://repo.nukkitx.com/main/</url>
+            <url>https://repo.opencollab.dev/maven-snapshots/</url>
         </repository>
     </repositories>
-
 
     <dependencies>
         <dependency>
@@ -32,8 +31,10 @@
         </dependency>
         <dependency>
             <groupId>cn.nukkit</groupId>
-            <artifactId>nukkit</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <artifactId>NukkitX</artifactId>
+            <version>IGN</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/production.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.creeperface.nukkit.placeholderapi</groupId>
@@ -42,11 +43,8 @@
         </dependency>
         <dependency>
             <groupId>ru.nukkit.dblib</groupId>
-            <artifactId>dblib</artifactId>
-            <version>0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/DbLib.jar</systemPath>
+            <artifactId>DbLib</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
 </project>
