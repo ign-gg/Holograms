@@ -6,7 +6,7 @@
 
     <groupId>gt.creeperface.nukkit</groupId>
     <artifactId>Holograms</artifactId>
-    <version>4.0-IGN</version>
+    <version>4.0-IGN.2</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -14,6 +14,27 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
+
+    <build>
+        <resources>
+            <resource>
+                <targetPath>.</targetPath>
+                <filtering>true</filtering>
+                <directory>${basedir}/src/main/resources/</directory>
+                <includes>
+                    <include>plugin.yml</include>
+                </includes>
+            </resource>
+            <resource>
+                <targetPath>.</targetPath>
+                <filtering>false</filtering>
+                <directory>${basedir}/src/main/resources/</directory>
+                <includes>
+                    <include>*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 
     <repositories>
         <repository>

@@ -22,7 +22,7 @@ import java.util.ArrayList;
  */
 public class HologramCommand extends Command {
 
-    private Holograms plugin;
+    private final Holograms plugin;
 
     public HologramCommand(Holograms plugin) {
         super("hologram", "", "/hologram <hologram id | action>");
@@ -35,9 +35,9 @@ public class HologramCommand extends Command {
                 new CommandParameter[]{
                         new CommandParameter("hologram id", CommandParamType.STRING, false)
                 });
-        this.commandParameters.put("remove",
+        this.commandParameters.put("modify",
                 new CommandParameter[]{
-                        new CommandParameter("action", false, new String[]{"edit", "update"})
+                        new CommandParameter("hologram action", false, new String[]{"edit", "update"})
                 });
     }
 
